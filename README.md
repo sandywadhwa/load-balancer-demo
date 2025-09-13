@@ -1,4 +1,4 @@
-# nginx-load-balancer
+# load-balancer-demo
 
 ### Three Servers
 
