@@ -2,39 +2,20 @@ const express = require("express");
 const app = express();
 const port = process.env.PORT || 7070;
 
-var books = [];
-books.push({"bookid": 10, "authors": ["Shesh", "Vishwas"]});
-books.push({"bookid": 11, "authors": ["Praveen", "SandeepR"]});
-books.push({"bookid": 12, "authors": ["Praveen", "SandeepR", "Vishwas"]});
+function getRandomColor() {
+  var letters = '0123456789ABCDEF';
+  var color = '#';
+  for (var i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
+}
 
+var color = getRandomColor();
+var servername = require('os').hostname();
 app.get('/', function(req, res){
-    res.json({"server": require('os').hostname()});
-});
-
-app.get('/api/books', function(req, res){
-    // Get data from db
-    res.json({"data": books});
-});
-app.post('/api/books', function(req, res){
-    // Create record in db
-    const data = req.body;
-    const qp = req.query;
-    console.log(qp);
-    res.json({"result": true});
-});
-app.get('/api/books/:id', function(req, res){
-
-    const bookid = req.params.id;
-    res.json({"result": books[bookid]});
-});
-app.put('/api/books/:id', function(req, res){
-    res.json({"result": true});
-});
-app.patch('/api/books/:id', function(req, res){
-    res.json({"result": true});
-});
-app.delete('/api/books/:id', function(req, res){
-    res.json({"result": true});
+    var msg = `<h1 style="color:${color};">Responding Server: ${servername} </h1>`;
+    res.send(msg);
 });
 
 app.listen(port, function(){
