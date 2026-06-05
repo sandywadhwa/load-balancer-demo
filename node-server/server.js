@@ -14,7 +14,7 @@ function getRandomColor() {
 var color = getRandomColor();
 var servername = require('os').hostname();
 app.get('/', function(req, res){
-    var msg = `<h1 style="color:${color};">Responding Server: ${servername} </h1>`;
+    var msg = `<h1 style="color:${color};">NODEJS - Server: ${servername} </h1>`;
     res.send(msg);
 });
 
